@@ -4,18 +4,40 @@ import UserPageTemplate from '../../templates/UserPageTemplate';
 import addIcon from '../../assets/icons/plus.svg';
 import ButtonIcon from '../../components/ButtonIcon/ButtonIcon';
 import NoteCard from '../../components/NoteCard/NoteCard';
+import Header from '../../components/Header/Header';
+import Heading from '../../components/Heading/Heading';
 
 const StyledNotesWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 0 75px 20px 20px;
+
+  @media (min-width: ${({ theme }) => theme.resolution.md}) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 40px;
+    padding: 10px 125px 25px 30px;
+  }
+
+  @media (min-width: ${({ theme }) => theme.resolution.l}) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 40px;
+    padding-left: 50px;
+  }
+
+  @media (min-width: ${({ theme }) => theme.resolution.xl}) {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 25px 150px 25px 50px;
+  }
 `;
 
 const Notes = () => (
   <UserPageTemplate pageType="notes">
-    <h1>Notes</h1>
+    <Header>
+      <Heading big>Notes</Heading>
+    </Header>
     <StyledNotesWrapper>
+      <NoteCard />
+      <NoteCard />
       <NoteCard />
       <NoteCard />
       <NoteCard />

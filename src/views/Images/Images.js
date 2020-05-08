@@ -2,10 +2,14 @@ import React from 'react';
 import UserPageTemplate from '../../templates/UserPageTemplate';
 import addIcon from '../../assets/icons/plus.svg';
 import ButtonIcon from '../../components/ButtonIcon/ButtonIcon';
+import Header from '../../components/Header/Header';
+import Heading from '../../components/Heading/Heading';
 
 const Images = () => (
   <UserPageTemplate pageType="images">
-    <h1>Images</h1>
+    <Header>
+      <Heading big>Notes</Heading>
+    </Header>
     <ButtonIcon icon={addIcon} className="add" activeColor="images" />
   </UserPageTemplate>
 );
