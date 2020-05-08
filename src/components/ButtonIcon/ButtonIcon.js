@@ -31,6 +31,7 @@ const ButtonIcon = styled.button`
   @media (min-width: ${({ theme }) => theme.resolution.l}) {
     width: 75px;
     height: 75px;
+    margin-right: 0;
   }
 
   &.active {

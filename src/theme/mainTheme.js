@@ -3,12 +3,17 @@ export const theme = {
   notes: '#FEDCD2',
   todo: '#E5BACE',
   images: '#D48166',
+  grey100: 'hsl(0, 0%, 96%)',
+  grey200: 'hsl(0, 0%, 90%',
+  grey300: 'hsl(0, 0%, 70%)',
   resolution: {
     xl: '1200px',
     l: '960px',
     md: '768px',
     sm: '576px',
   },
+  light: 300,
+  bold: 600,
   fontSize: {
     xxs: '1rem',
     xs: '1.2rem',

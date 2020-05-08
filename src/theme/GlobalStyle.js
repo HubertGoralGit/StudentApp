@@ -19,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: "Montserrat", sans-serif;
     @media (min-width: 960px) {
       padding-left: 150px;
+      padding-top: 0;
     }
   }
 `;

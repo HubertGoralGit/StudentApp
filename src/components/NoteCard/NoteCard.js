@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Heading from '../Heading/Heading';
+import Paragraph from '../Paragraph/Paragraph';
 
 const StyledWrapper = styled.div`
   min-height: 380px;
@@ -17,11 +18,18 @@ const StyledHeadingWrapper = styled.div`
   border-top-left-radius: 10px;
 `;
 
+const StyledInnerWrapper = styled.div`
+  padding: 10px 10px;
+`;
+
 const NoteCard = () => (
   <StyledWrapper>
     <StyledHeadingWrapper>
       <Heading>React router</Heading>
     </StyledHeadingWrapper>
+    <StyledInnerWrapper>
+      <Paragraph>elo melo trzy dwa zero</Paragraph>
+    </StyledInnerWrapper>
   </StyledWrapper>
 );
 
