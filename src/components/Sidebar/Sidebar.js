@@ -36,6 +36,10 @@ const StyledLogoButton = styled(NavLink)`
   text-decoration: none;
   color: black;
   font-weight: bold;
+
+  @media (min-width: ${({ theme }) => theme.resolution.l}) {
+    font-size: ${({ theme }) => theme.fontSize.l};
+  }
 `;
 
 const StyledLinksList = styled.ul`
@@ -66,6 +70,11 @@ const StyledLogoutButton = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
+
+  @media (min-width: ${({ theme }) => theme.resolution.l}) {
+    width: 75px;
+    height: 75px;
+  }
 `;
 
 const Sidebar = ({ pageType }) => (

@@ -15,6 +15,19 @@ const ButtonIcon = styled.button`
   border-radius: 15px;
   margin-right: 20px;
 
+  &.add {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    background-color: ${({ activeColor, theme }) =>
+      activeColor ? theme[activeColor] : theme.note};
+    border-radius: 50%;
+    @media (min-width: ${({ theme }) => theme.resolution.l}) {
+      bottom: 20px;
+      right: 20px;
+    }
+  }
+
   @media (min-width: ${({ theme }) => theme.resolution.l}) {
     width: 75px;
     height: 75px;
