@@ -14,9 +14,12 @@ const GlobalStyle = createGlobalStyle`
   }
   
   body {
-    padding-left: 150px;
+    padding-top: 100px;
     font-size: 1.6rem;
     font-family: "Montserrat", sans-serif;
+    @media (min-width: 960px) {
+      padding-left: 150px;
+    }
   }
 `;
 
