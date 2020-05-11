@@ -1,33 +1,17 @@
+/* eslint-disable import/no-named-as-default-member */
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import UserPageTemplate from '../../templates/UserPageTemplate';
 import addIcon from '../../assets/icons/plus.svg';
 import ButtonIcon from '../../components/ButtonIcon/ButtonIcon';
+// eslint-disable-next-line import/no-named-as-default-member
+// eslint-disable-next-line import/no-named-as-default
 import NoteCard from '../../components/NoteCard/NoteCard';
 import Header from '../../components/Header/Header';
 import Heading from '../../components/Heading/Heading';
 import Input from '../../components/Input/Input';
-
-const notes = [
-  {
-    id: 1,
-    title: 'React router',
-    content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-  },
-  {
-    id: 2,
-    title: 'Redux',
-    content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-  },
-  {
-    id: 3,
-    title: 'React',
-    content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-  },
-];
 
 const StyledNotesWrapper = styled.div`
   display: grid;
@@ -52,7 +36,7 @@ const StyledNotesWrapper = styled.div`
   }
 `;
 
-const Notes = () => (
+const Notes = ({ notes }) => (
   <UserPageTemplate pageType="notes">
     <Header>
       <Heading big>Notes</Heading>
@@ -67,4 +51,22 @@ const Notes = () => (
   </UserPageTemplate>
 );
 
-export default Notes;
+// eslint-disable-next-line react/no-typos
+Notes.PropTypes = {
+  notes: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+  }),
+};
+
+Notes.defaultProps = {
+  notes: [],
+};
+
+const mapStateToProps = state => {
+  const { notes } = state;
+  return { notes };
+};
+
+export default connect(mapStateToProps)(Notes);
