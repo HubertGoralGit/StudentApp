@@ -1,5 +1,10 @@
 {
   "extends": ["airbnb", "prettier", "prettier/react"],
+  "parser": "babel-eslint",
+  "globals": {
+    "window": true,
+    "document": true
+  }
   "rules": {
     "react/jsx-filename-extension": [
       1,
@@ -10,6 +15,7 @@
   },
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "jest": true
   }
 }

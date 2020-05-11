@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { removeItem } from '../../actions/index';
 import Heading from '../Heading/Heading';
 import Paragraph from '../Paragraph/Paragraph';
 import Button from '../Button/Button';
@@ -48,7 +50,7 @@ class NoteCard extends Component {
   handleRedirectClick = () => this.setState({ redirect: true });
 
   render() {
-    const { id, title, content } = this.props;
+    const { id, title, content, itemType, removeItem } = this.props;
     const { redirect } = this.state;
 
     if (redirect) {
@@ -77,7 +79,9 @@ class NoteCard extends Component {
           </Paragraph>
         </StyledInnerWrapper>
         <StyledButtonWrapper>
-          <Button secondary>Remove</Button>
+          <Button onClick={() => removeItem(itemType, id)} secondary>
+            Remove
+          </Button>
         </StyledButtonWrapper>
       </StyledWrapper>
     );
@@ -88,6 +92,18 @@ NoteCard.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
+  itemType: PropTypes.oneOf(['notes', 'todo', 'images']),
 };
 
-export default NoteCard;
+NoteCard.defaultProps = {
+  itemType: 'notes',
+};
+
+const mapDispatchToProps = dispatch => ({
+  removeItem: (itemType, id) => dispatch(removeItem(itemType, id)),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(NoteCard);

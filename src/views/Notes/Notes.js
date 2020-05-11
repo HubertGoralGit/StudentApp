@@ -1,6 +1,6 @@
 /* eslint-disable import/no-named-as-default-member */
 import React from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import UserPageTemplate from '../../templates/UserPageTemplate';
@@ -44,7 +44,7 @@ const Notes = ({ notes }) => (
     <Input search placeholder="search" />
     <StyledNotesWrapper>
       {notes.map(({ title, content, id }) => (
-        <NoteCard id={id} title={title} content={content} key={id} />
+        <NoteCard id={id} title={title} content={content} itemType="notes" key={id} />
       ))}
     </StyledNotesWrapper>
     <ButtonIcon icon={addIcon} className="add" activeColor="notes" />
@@ -52,12 +52,14 @@ const Notes = ({ notes }) => (
 );
 
 // eslint-disable-next-line react/no-typos
-Notes.PropTypes = {
-  notes: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired,
-  }),
+Notes.propTypes = {
+  notes: propTypes.arrayOf(
+    propTypes.shape({
+      id: propTypes.number.isRequired,
+      title: propTypes.string.isRequired,
+      content: propTypes.string.isRequired,
+    }),
+  ),
 };
 
 Notes.defaultProps = {
