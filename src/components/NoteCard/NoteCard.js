@@ -57,7 +57,7 @@ class NoteCard extends Component {
       return (
         <Redirect
           to={{
-            pathname: `note/details/${id}`,
+            pathname: `notes/details/${id}-${title}`,
             state: {
               title: title,
               content: content,

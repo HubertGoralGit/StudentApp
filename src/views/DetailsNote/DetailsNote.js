@@ -27,7 +27,7 @@ class DetailsNote extends Component {
         <Header>
           <Heading big>{title}</Heading>
         </Header>
-        <Button back as={NavLink} to="/notes">
+        <Button back="true" as={NavLink} to="/notes">
           Back to notes
         </Button>
         <StyledContentWrapper>

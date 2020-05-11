@@ -28,6 +28,7 @@ const Button = styled.button`
       height: 30px;
       font-size: 10px;
     `}
+
   ${({ back }) =>
     back &&
     css`

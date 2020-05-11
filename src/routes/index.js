@@ -2,7 +2,7 @@
 export const routes = {
   home: '/',
   notes: '/notes',
-  note: '/note',
+  note: '/notes',
   todo: '/todo',
   images: '/images',
   login: '/login',

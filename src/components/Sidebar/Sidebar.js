@@ -19,6 +19,7 @@ const StyledWrapper = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 100;
 
   @media (min-width: ${({ theme }) => theme.resolution.l}) {
     padding: 25px 0;
