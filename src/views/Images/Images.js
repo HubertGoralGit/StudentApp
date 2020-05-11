@@ -8,7 +8,7 @@ import Heading from '../../components/Heading/Heading';
 const Images = () => (
   <UserPageTemplate pageType="images">
     <Header>
-      <Heading big>Notes</Heading>
+      <Heading big>Images</Heading>
     </Header>
     <ButtonIcon icon={addIcon} className="add" activeColor="images" />
   </UserPageTemplate>

@@ -33,6 +33,13 @@ const StyledButtonWrapper = styled.div`
   right: 10px;
 `;
 
+const StyledLink = styled.a`
+  font-size: ${({ theme }) => theme.fontSize.s};
+  font-weight: ${({ theme }) => theme.regular};
+  color: blue;
+  cursor: pointer;
+`;
+
 class NoteCard extends Component {
   state = {
     redirect: false,
@@ -45,16 +52,29 @@ class NoteCard extends Component {
     const { redirect } = this.state;
 
     if (redirect) {
-      return <Redirect to={`notes/details/${id}`} />;
+      return (
+        <Redirect
+          to={{
+            pathname: `note/details/${id}`,
+            state: {
+              title: title,
+              content: content,
+            },
+          }}
+        />
+      );
     }
 
     return (
-      <StyledWrapper onClick={this.handleRedirectClick}>
+      <StyledWrapper>
         <StyledHeadingWrapper>
           <Heading>{title}</Heading>
         </StyledHeadingWrapper>
         <StyledInnerWrapper>
-          <Paragraph>{content}</Paragraph>
+          <Paragraph>
+            {content.substring(0, 200)}
+            <StyledLink onClick={this.handleRedirectClick}>...ReadMore</StyledLink>
+          </Paragraph>
         </StyledInnerWrapper>
         <StyledButtonWrapper>
           <Button secondary>Remove</Button>
