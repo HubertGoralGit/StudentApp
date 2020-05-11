@@ -8,6 +8,33 @@ import Header from '../../components/Header/Header';
 import Heading from '../../components/Heading/Heading';
 import Input from '../../components/Input/Input';
 
+const notes = [
+  {
+    id: 1,
+    title: 'React router',
+    content:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
+  },
+  {
+    id: 2,
+    title: 'React router',
+    content:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
+  },
+  {
+    id: 3,
+    title: 'React router',
+    content:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
+  },
+  {
+    id: 3,
+    title: 'React router',
+    content:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
+  },
+];
+
 const StyledNotesWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -38,11 +65,9 @@ const Notes = () => (
     </Header>
     <Input search placeholder="search" />
     <StyledNotesWrapper>
-      <NoteCard />
-      <NoteCard />
-      <NoteCard />
-      <NoteCard />
-      <NoteCard />
+      {notes.map(({ title, content, id }) => (
+        <NoteCard id={id} title={title} content={content} key={id} />
+      ))}
     </StyledNotesWrapper>
     <ButtonIcon icon={addIcon} className="add" activeColor="notes" />
   </UserPageTemplate>

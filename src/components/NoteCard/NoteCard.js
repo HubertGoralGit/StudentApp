@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import Heading from '../Heading/Heading';
 import Paragraph from '../Paragraph/Paragraph';
+import Button from '../Button/Button';
 
 const StyledWrapper = styled.div`
   min-height: 380px;
@@ -9,6 +12,7 @@ const StyledWrapper = styled.div`
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
   margin-bottom: 50px;
+  position: relative;
 `;
 
 const StyledHeadingWrapper = styled.div`
@@ -19,18 +23,51 @@ const StyledHeadingWrapper = styled.div`
 `;
 
 const StyledInnerWrapper = styled.div`
-  padding: 10px 10px;
+  padding: 10px 15px;
+  height: 80%;
 `;
 
-const NoteCard = () => (
-  <StyledWrapper>
-    <StyledHeadingWrapper>
-      <Heading>React router</Heading>
-    </StyledHeadingWrapper>
-    <StyledInnerWrapper>
-      <Paragraph>elo melo trzy dwa zero</Paragraph>
-    </StyledInnerWrapper>
-  </StyledWrapper>
-);
+const StyledButtonWrapper = styled.div`
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+`;
+
+class NoteCard extends Component {
+  state = {
+    redirect: false,
+  };
+
+  handleRedirectClick = () => this.setState({ redirect: true });
+
+  render() {
+    const { id, title, content } = this.props;
+    const { redirect } = this.state;
+
+    if (redirect) {
+      return <Redirect to={`notes/details/${id}`} />;
+    }
+
+    return (
+      <StyledWrapper onClick={this.handleRedirectClick}>
+        <StyledHeadingWrapper>
+          <Heading>{title}</Heading>
+        </StyledHeadingWrapper>
+        <StyledInnerWrapper>
+          <Paragraph>{content}</Paragraph>
+        </StyledInnerWrapper>
+        <StyledButtonWrapper>
+          <Button secondary>Remove</Button>
+        </StyledButtonWrapper>
+      </StyledWrapper>
+    );
+  }
+}
+
+NoteCard.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+};
 
 export default NoteCard;
