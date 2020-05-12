@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import Heading from '../Heading/Heading';
+import { addItem as addItemAction } from '../../actions/index';
 
 const StyledModalWrapper = styled.div`
   z-index: 9999;
@@ -38,13 +42,88 @@ const StyledInput = styled(Input)`
   width: 100%;
 `;
 
-const NewNoteModal = ({ isVisible }) => (
-  <StyledModalWrapper isVisible={isVisible}>
-    <Heading big>Create New Note</Heading>
-    <StyledInput placeholder="title" />
-    <StyledTextArea as="textarea" placeholder="text" />
-    <Button add>Add Note</Button>
-  </StyledModalWrapper>
-);
+const StyledErrorWrapper = styled.div`
+  margin-bottom: 15px;
+  color: red;
+`;
 
-export default NewNoteModal;
+class NewNoteModal extends Component {
+  render() {
+    const { itemType, isVisible, addItem } = this.props;
+
+    return (
+      <StyledModalWrapper isVisible={isVisible}>
+        <Heading big>Create New Note</Heading>
+        <Formik
+          initialValues={{ title: '', content: '' }}
+          validate={values => {
+            const errors = {};
+            if (!values.title) {
+              errors.title = 'Title required';
+            }
+            if (!values.content) {
+              errors.content = 'Note content required';
+            }
+            return errors;
+          }}
+          onSubmit={values => {
+            addItem(itemType, values);
+            values.content = '';
+            values.title = '';
+          }}
+        >
+          {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
+            <Form>
+              <StyledErrorWrapper>
+                {errors.title && touched.title && errors.title}
+              </StyledErrorWrapper>
+              <StyledInput
+                type="text"
+                name="title"
+                placeholder="title"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.title}
+              />
+              <StyledErrorWrapper>
+                {errors.content && touched.content && errors.content}
+              </StyledErrorWrapper>
+              <StyledTextArea
+                as="textarea"
+                name="content"
+                placeholder="text"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.content}
+              />
+
+              <Button type="submit" add>
+                Add Note
+              </Button>
+            </Form>
+          )}
+        </Formik>
+      </StyledModalWrapper>
+    );
+  }
+}
+
+NewNoteModal.propTypes = {
+  itemType: PropTypes.oneOf(['notes', 'todo', 'images']),
+  isVisible: PropTypes.bool,
+  addItem: PropTypes.func.isRequired,
+};
+
+NewNoteModal.defaultProps = {
+  itemType: 'notes',
+  isVisible: false,
+};
+
+const mapDispatchToProps = dispatch => ({
+  addItem: (itemType, itemContent) => dispatch(addItemAction(itemType, itemContent)),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(NewNoteModal);
