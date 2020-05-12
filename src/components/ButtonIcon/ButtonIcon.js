@@ -22,10 +22,11 @@ const ButtonIcon = styled.button`
     background-color: ${({ activeColor, theme }) =>
       activeColor ? theme[activeColor] : theme.notes};
     border-radius: 50%;
+    background-size: 45%;
     width: 55px;
     height: 55px;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-    transition: 0.2s linear;
+    z-index: 99999;
 
     :hover {
       box-shadow: 0 5px 24px rgba(0, 0, 0, 0.3);

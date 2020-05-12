@@ -29,6 +29,12 @@ const Button = styled.button`
       font-size: 10px;
     `}
 
+    ${({ add }) =>
+      add &&
+      css`
+        background-color: ${({ theme }) => theme.notes};
+      `}
+
   ${({ back }) =>
     back &&
     css`

@@ -1,5 +1,5 @@
 /* eslint-disable import/no-named-as-default-member */
-import React from 'react';
+import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
@@ -12,6 +12,8 @@ import NoteCard from '../../components/NoteCard/NoteCard';
 import Header from '../../components/Header/Header';
 import Heading from '../../components/Heading/Heading';
 import Input from '../../components/Input/Input';
+import NewNoteModal from '../../components/NewNoteModal/NewNoteModal';
+import CancelIcon from '../../assets/icons/cancel.svg';
 
 const StyledNotesWrapper = styled.div`
   display: grid;
@@ -36,20 +38,49 @@ const StyledNotesWrapper = styled.div`
   }
 `;
 
-const Notes = ({ notes }) => (
-  <UserPageTemplate pageType="notes">
-    <Header>
-      <Heading big>Notes</Heading>
-    </Header>
-    <Input search placeholder="search" />
-    <StyledNotesWrapper>
-      {notes.map(({ title, content, id }) => (
-        <NoteCard id={id} title={title} content={content} itemType="notes" key={id} />
-      ))}
-    </StyledNotesWrapper>
-    <ButtonIcon icon={addIcon} className="add" activeColor="notes" />
-  </UserPageTemplate>
-);
+class Notes extends Component {
+  state = {
+    isNewNoteModalVisible: false,
+    icon: addIcon,
+  };
+
+  handleNewItemBarToggle = () => {
+    this.setState(prevState => ({
+      isNewNoteModalVisible: !prevState.isNewNoteModalVisible,
+    }));
+    if (this.state.isNewNoteModalVisible) {
+      this.setState({ icon: addIcon });
+    } else {
+      this.setState({ icon: CancelIcon });
+    }
+  };
+
+  render() {
+    const { notes } = this.props;
+    const { isNewNoteModalVisible, icon } = this.state;
+
+    return (
+      <UserPageTemplate pageType="notes">
+        <Header>
+          <Heading big>Notes</Heading>
+        </Header>
+        <Input search placeholder="search" />
+        <StyledNotesWrapper>
+          {notes.map(({ title, content, id }) => (
+            <NoteCard id={id} title={title} content={content} itemType="notes" key={id} />
+          ))}
+        </StyledNotesWrapper>
+        <ButtonIcon
+          onClick={this.handleNewItemBarToggle}
+          icon={icon}
+          className="add"
+          activeColor="notes"
+        />
+        <NewNoteModal isVisible={isNewNoteModalVisible} />
+      </UserPageTemplate>
+    );
+  }
+}
 
 // eslint-disable-next-line react/no-typos
 Notes.propTypes = {
