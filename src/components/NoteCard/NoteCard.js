@@ -89,7 +89,7 @@ class NoteCard extends Component {
 }
 
 NoteCard.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   itemType: PropTypes.oneOf(['notes', 'todo', 'images']),

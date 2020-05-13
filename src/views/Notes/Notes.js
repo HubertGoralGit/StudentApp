@@ -86,7 +86,7 @@ class Notes extends Component {
 Notes.propTypes = {
   notes: propTypes.arrayOf(
     propTypes.shape({
-      id: propTypes.number.isRequired,
+      id: propTypes.string.isRequired,
       title: propTypes.string.isRequired,
       content: propTypes.string.isRequired,
     }),
