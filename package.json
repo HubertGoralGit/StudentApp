@@ -6,6 +6,7 @@
     "formik": "^2.1.4",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
+    "react-calendar": "^3.0.1",
     "react-dom": "^16.8.4",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
