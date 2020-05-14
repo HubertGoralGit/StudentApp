@@ -18,7 +18,6 @@ const StyledContentWrapper = styled.div`
   }
 `;
 
-// eslint-disable-next-line react/prefer-stateless-function
 class DetailsNote extends Component {
   render() {
     const { title, content } = this.props.location.state;

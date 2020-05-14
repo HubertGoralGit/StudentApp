@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Redirect } from 'react-router-dom';
 import UserPageTemplate from '../../templates/UserPageTemplate';
 import Header from '../../components/Header/Header';
 import Heading from '../../components/Heading/Heading';
@@ -16,15 +17,47 @@ const StyledCalendarWrapper = styled.div`
   margin-top: 50px;
 `;
 
-const Todo = () => (
-  <UserPageTemplate pageType="todo">
-    <Header>
-      <Heading big>To-Do</Heading>
-    </Header>
-    <StyledCalendarWrapper>
-      <Calendar />
-    </StyledCalendarWrapper>
-  </UserPageTemplate>
-);
+class Todo extends Component {
+  state = {
+    date: new Date(),
+    redirect: false,
+  };
+
+  onChange = date => this.setState({ date });
+
+  handleRedirectClick = () => this.setState({ redirect: true });
+
+  render() {
+    const { date, redirect } = this.state;
+
+    if (redirect) {
+      return (
+        <Redirect
+          to={{
+            pathname: `todo/details/${date}`,
+            state: {
+              date: date,
+            },
+          }}
+        />
+      );
+    }
+
+    return (
+      <UserPageTemplate pageType="todo">
+        <Header>
+          <Heading big>To-Do</Heading>
+        </Header>
+        <StyledCalendarWrapper>
+          <Calendar
+            onChange={this.onChange}
+            value={this.state.date}
+            onClickDay={this.handleRedirectClick}
+          />
+        </StyledCalendarWrapper>
+      </UserPageTemplate>
+    );
+  }
+}
 
 export default Todo;
