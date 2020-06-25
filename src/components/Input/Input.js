@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import magnifierIcon from '../../assets/icons/magnifier.svg';
-
 const Input = styled.input`
   padding: 15px 30px;
   font-size: ${({ theme }) => theme.fontSize.s};
@@ -10,13 +9,11 @@ const Input = styled.input`
   border-radius: 50px;
   margin-bottom: 25px;
   outline: none;
-
   ::placeholder {
     text-transform: uppercase;
     letter-spacing: 1px;
     color: ${({ theme }) => theme.grey300};
   }
-
   ${({ search }) =>
     search &&
     css`
@@ -27,6 +24,12 @@ const Input = styled.input`
       background-position: 15px 50%;
       background-repeat: no-repeat;
     `}
+  ${({ todo }) =>
+    todo &&
+    css`
+      padding: 10px 10px 10px 15px;
+      font-size: ${({ theme }) => theme.fontSize.xs};
+      width: 200px;
+    `}
 `;
-
 export default Input;

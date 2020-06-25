@@ -1,5 +1,6 @@
 const initialState = {
   notes: [],
+  todo: [],
 };
 
 const rootReducer = (state = initialState, action) => {

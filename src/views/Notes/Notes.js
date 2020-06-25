@@ -11,7 +11,6 @@ import ButtonIcon from '../../components/ButtonIcon/ButtonIcon';
 import NoteCard from '../../components/NoteCard/NoteCard';
 import Header from '../../components/Header/Header';
 import Heading from '../../components/Heading/Heading';
-import Input from '../../components/Input/Input';
 import NewNoteModal from '../../components/NewNoteModal/NewNoteModal';
 import CancelIcon from '../../assets/icons/cancel.svg';
 
@@ -62,9 +61,8 @@ class Notes extends Component {
     return (
       <UserPageTemplate pageType="notes">
         <Header>
-          <Heading big>Notes</Heading>
+          <Heading big>My Notes</Heading>
         </Header>
-        <Input search placeholder="search" />
         <StyledNotesWrapper>
           {notes.map(({ title, content, id }) => (
             <NoteCard id={id} title={title} content={content} itemType="notes" key={id} />
