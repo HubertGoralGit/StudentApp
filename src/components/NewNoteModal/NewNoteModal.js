@@ -109,7 +109,7 @@ class NewNoteModal extends Component {
 }
 
 NewNoteModal.propTypes = {
-  itemType: PropTypes.oneOf(['notes', 'todo', 'images']),
+  itemType: PropTypes.oneOf(['notes', 'todo']),
   isVisible: PropTypes.bool,
   addItem: PropTypes.func.isRequired,
 };

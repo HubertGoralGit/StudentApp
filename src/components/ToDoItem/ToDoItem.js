@@ -69,7 +69,7 @@ class ToDoItem extends Component {
 ToDoItem.propTypes = {
   id: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
-  itemType: PropTypes.oneOf(['notes', 'todo', 'images']),
+  itemType: PropTypes.oneOf(['notes', 'todo']),
 };
 
 ToDoItem.defaultProps = {

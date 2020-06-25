@@ -6,7 +6,6 @@ import store from '../../store/index';
 import MainTemplate from '../../templates/MainTemplate';
 import Notes from '../Notes/Notes';
 import Todo from '../Todo/Todo';
-import Images from '../Images/Images';
 import Login from '../Login/Login';
 import DetailsNote from '../DetailsNote/DetailsNote';
 import DetailsToDo from '../DetailsToDo/DetailsToDo';
@@ -21,7 +20,6 @@ const Root = () => (
           <Route path={routes.note} component={DetailsNote} />
           <Route exact path={routes.todo} component={Todo} />
           <Route path={routes.day} component={DetailsToDo} />
-          <Route exact path={routes.images} component={Images} />
           <Route exact path={routes.login} component={Login} />
         </Switch>
       </MainTemplate>

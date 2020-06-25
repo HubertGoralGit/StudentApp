@@ -92,7 +92,7 @@ NoteCard.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
-  itemType: PropTypes.oneOf(['notes', 'todo', 'images']),
+  itemType: PropTypes.oneOf(['notes', 'todo']),
 };
 
 NoteCard.defaultProps = {

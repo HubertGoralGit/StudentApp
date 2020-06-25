@@ -5,6 +5,5 @@ export const routes = {
   note: '/notes/details/:id',
   todo: '/todo',
   day: '/todo/details/:day',
-  images: '/images',
   login: '/login',
 };

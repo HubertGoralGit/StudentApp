@@ -19,6 +19,6 @@ const UserPageTemplate = ({ children, pageType }) => (
 
 UserPageTemplate.propTypes = {
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.node]).isRequired,
-  pageType: PropTypes.oneOf(['notes', 'todo', 'images']),
+  pageType: PropTypes.oneOf(['notes', 'todo']),
 };
 export default UserPageTemplate;

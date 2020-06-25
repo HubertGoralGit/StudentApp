@@ -2,7 +2,6 @@
 export const theme = {
   notes: '#FEDCD2',
   todo: '#E5BACE',
-  images: '#D48166',
   grey100: 'hsl(0, 0%, 96%)',
   grey200: 'hsl(0, 0%, 90%',
   grey300: 'hsl(0, 0%, 70%)',

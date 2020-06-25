@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import ButtonIcon from '../ButtonIcon/ButtonIcon';
 import noteIcon from '../../assets/icons/notes.svg';
 import todoIcon from '../../assets/icons/todo.svg';
-import imageIcon from '../../assets/icons/image.svg';
 import logoutIcon from '../../assets/icons/logout.svg';
 
 const StyledWrapper = styled.nav`
@@ -88,16 +87,13 @@ const Sidebar = ({ pageType }) => (
       <li>
         <ButtonIcon as={NavLink} to="/todo" icon={todoIcon} activeclass="active" />
       </li>
-      <li>
-        <ButtonIcon as={NavLink} to="/images" icon={imageIcon} activeclass="active" />
-      </li>
     </StyledLinksList>
     <StyledLogoutButton as={NavLink} to="/login" />
   </StyledWrapper>
 );
 
 Sidebar.propTypes = {
-  pageType: PropTypes.oneOf(['notes', 'todo', 'images']),
+  pageType: PropTypes.oneOf(['notes', 'todo']),
 };
 
 Sidebar.defaultProps = {

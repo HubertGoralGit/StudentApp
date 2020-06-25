@@ -81,7 +81,7 @@ Todo.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
-      itemType: PropTypes.oneOf(['notes', 'todo', 'images']),
+      itemType: PropTypes.oneOf(['notes', 'todo']),
       addItem: PropTypes.func.isRequired,
     }),
   ),
