@@ -16,7 +16,7 @@ const StyledModalWrapper = styled.div`
   height: 100vh;
   background-color: white;
   border-left: 10px solid ${({ theme }) => theme.notes};
-  padding: 100px 50px;
+  padding: 10px 50px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -26,6 +26,7 @@ const StyledModalWrapper = styled.div`
 
   @media (min-width: ${({ theme }) => theme.resolution.l}) {
     width: 680px;
+    padding: 100px 50px;
   }
 `;
 

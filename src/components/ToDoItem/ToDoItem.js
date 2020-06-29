@@ -23,6 +23,8 @@ const StyledItemContent = styled.span`
 `;
 
 const StyledTickButton = styled(ButtonIcon)`
+  margin-right: 0;
+
   &.taskDone {
     display: none;
   }
