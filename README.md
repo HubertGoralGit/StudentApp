@@ -1,3 +1,5 @@
+Link to Live: https://hubert-student-app.netlify.app/notes
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
